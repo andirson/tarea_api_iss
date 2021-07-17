@@ -1,143 +1,161 @@
-
 <!DOCTYPE html>
 <html>
-    <head>
 
-        <meta charset="utf-8">
-        
-        <!-- importar libreria leaflet -->
-        <link rel="stylesheet" href="lib/leaflet/leaflet.css" />
-        <script src="lib/leaflet/leaflet.js"></script>
+<head>
 
-        <!-- importar libreria JQuery -->
-		<script src="lib/jquery/jquery-3.4.1.js"></script>
+    <meta charset="utf-8">
 
-        <!-- Latest compiled and minified CSS -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- importar libreria leaflet -->
+    <link rel="stylesheet" href="lib/leaflet/leaflet.css" />
+    <script src="lib/leaflet/leaflet.js"></script>
 
-        <!-- Latest compiled and minified JavaScript -->
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-        
-        		<!--  CSS -->
-		<style>
-        .panel > .panel-heading {
+    <!-- importar libreria JQuery -->
+    <script src="lib/jquery/jquery-3.4.1.js"></script>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+    <!--  CSS -->
+    <style>
+        .panel>.panel-heading {
             background-image: url("img/panel2.png");
             background-color: rgba(0, 0, 0, 0);
             color: rgb(0, 0, 0);
         }
-
-        .panel > .panel-body{
+        
+        .panel>.panel-body {
             background-image: none;
             background-color: rgba(0, 0, 0, 0);
             color: rgb(0, 0, 0);
         }
-		</style>
+    </style>
 
 
-    </head>
+</head>
 
-    <body>
+<body>
 
-    
-        <div class="row">
-            <div class="col-sm-6 col-sm-offset-3">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <div class="panel-title">
-                            <div class="row">
-                                <div class="col-sm-1">
-                                    <img src="img/logo_univalle.png" width="60px" height="85px">
-                                </div>
-                                <div class="col-sm-10">
-                                    <h1 style= "text-align: center; color:rgba(255, 255, 255, 0.986);">Tarea de conexión a API - Versión Star Wars</h1>
-                                </div>
+
+    <div class="row">
+        <div class="col-sm-6 col-sm-offset-3">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <div class="panel-title">
+                        <div class="row">
+                            <div class="col-sm-1">
+                                <img src="img/logo_univalle.png" width="60px" height="85px">
+                            </div>
+                            <div class="col-sm-10">
+                                <h1 style="text-align: center; color:rgba(255, 255, 255, 0.986);">Tarea de conexión a API - Versión Star Wars</h1>
                             </div>
                         </div>
                     </div>
-    
-                    <div class="panel-body">
-                        <!-- Lienzo del mapa -->
-                        <div id="map" style="width: 100%; height: 620px;"></div>
+                </div>
 
+                <div class="panel-body">
+                    <!-- Lienzo del mapa -->
+                    <div id="map" style="width: 100%; height: 620px;"></div>
+
+                </div>
+                <div class="p-3 mb-2 bg-light text-dark" id="informacion_sobre_ruta"></div>
+                <div class="panel-footer panel-default">
+                    <div class="col-sm-6">
+                        <p style="text-align: justify;">Tarea de conexión a la API de Open Notify, sobre la estación internacional espacial, la cual puede ser consultada en el siguiente enlace: http://open-notify.org/Open-Notify-API/</p>
                     </div>
-                    <div class="p-3 mb-2 bg-light text-dark" id="informacion_sobre_ruta"></div>
-                    <div class="panel-footer panel-default">
-                        <div class="col-sm-6">
-                            <p style= "text-align: justify;">Tarea de conexión a la API de Open Notify, sobre la estación internacional espacial, la cual puede ser consultada en el siguiente enlace: http://open-notify.org/Open-Notify-API/</p>
-                        </div>
-    
-                        <div class="col-sm-6">
-                            <p style= "text-align: center";><b> Anderson Castañeda Trujillo - Codigo: 2005118-5751</b> </br>
+
+                    <div class="col-sm-6">
+                        <p style="text-align: center" ;><b> Anderson Castañeda Trujillo - Codigo: 2005118-5751</b> </br>
                             Especialización en Geomática - Geoinformación en la web </br>
                             Universidad del Valle</p>
-                        </div>
-                    </br></br></br>
                     </div>
+                    </br>
+                    </br>
+                    </br>
                 </div>
-    
             </div>
-    
+
         </div>
-        <div id="astronames"></div>	
-       <script>
 
-            //Mapa base
-            var map = L.map('map').setView([51.505, -0.09], 3);
+    </div>
+    <div id="astronames"></div>
+    <script>
+        //Mapa base
+        var map = L.map('map').setView([51.505, -0.09], 3);
 
-            L.tileLayer('https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png', {
-                attribution: '&copy; <a href="https://stadiamaps.com/">Stadia Maps</a>, &copy; <a href="https://openmaptiles.org/">OpenMapTiles</a> &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors'
-            }).addTo(map);
+        L.tileLayer('https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png', {
+            attribution: '&copy; <a href="https://stadiamaps.com/">Stadia Maps</a>, &copy; <a href="https://openmaptiles.org/">OpenMapTiles</a> &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors'
+        }).addTo(map);
 
-            //Muchos mapas bases
-            //https://leaflet-extras.github.io/leaflet-providers/preview/
-            
-            //Marcador con su respectivo estilo
-            var greenIcon = L.icon({
+        //Muchos mapas bases
+        //https://leaflet-extras.github.io/leaflet-providers/preview/
+
+        //Marcador con su respectivo estilo
+        var nave = L.icon({
             iconUrl: 'img/nave5.png',
-            shadowUrl: 'img/leaf-shadow.png',
-            iconSize:     [75, 60], // size of the icon
+            //shadowUrl: 'img/leaf-shadow.png',
+            iconSize: [75, 60] // size of the icon
             //shadowSize:   [50, 64], // size of the shadow
-            iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
-            shadowAnchor: [4, 62],  // the same for the shadow
-            popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
-            });
+            //iconAnchor: [22, 94], // point of the icon which will correspond to marker's location
+            //shadowAnchor: [4, 62], // the same for the shadow
+            //popupAnchor: [-3, -76] // point from which the popup should open relative to the iconAnchor
+        });
 
-            var iss = L.marker([51.5, -0.09], {icon: greenIcon}).addTo(map).bindPopup('<p id="astronames">'+nombres+'</p>');
-            //('<p>Latitud:'+location[0]+'</p><p>Longitud:'+location[1]+'</p>'); <p>Tripulantes:'+number+'</p>'
-     
+        var iss = L.marker([51.5, -0.09], {
+            icon: nave
+        }).addTo(map).bindPopup('aqui pondre el contendio del div');
 
-            //Función API nave espacial
-            function moveISS () {
-                $.getJSON('http://api.open-notify.org/iss-now.json?callback=?', function(data) {
-                    var lat = data['iss_position']['latitude'];
-                    var lon = data['iss_position']['longitude'];
+        var isscirc =   L.circle([50.5, 30.5], 1500000, {
+                                color: '#928E8D',
+                                fillColor: '#928E8D',
+                                fillOpacity: 0.05
+                            }).addTo(map).bindPopup("Esto es un circulo !!.");
 
-                    // See leaflet docs for setting up icons and map layers
-                    // The update to the map is done here:
-                    iss.setLatLng([lat, lon]);
-                    isscirc.setLatLng([lat, lon]);
-                    map.panTo([lat, lon], animate=true);
-                });
-                setTimeout(moveISS, 5000); 
-            }
 
-            moveISS() ;
-
-            $.getJSON('http://api.open-notify.org/astros.json?callback=?', function(data) {
+        $.getJSON('http://api.open-notify.org/astros.json?callback=?', function(data) {
             var number = data['number'];
             $('#spacepeeps').html(number);
 
-            var nombres = data['people'].forEach(function (d) {
+            var nombres = data['people'].forEach(function(d) {
                 $('#astronames').append('<li>' + d['name'] + '</li>');
             });
+
+            //actualizo el contenido del popup con el contenido del div astronames
+            iss._popup.setContent($('#astronames').html());
+
         });
 
+
+        //('<p>Latitud:'+location[0]+'</p><p>Longitud:'+location[1]+'</p>'); <p>Tripulantes:'+number+'</p>'
+
+
+        //Función API nave espacial
+        function moveISS() {
+            $.getJSON('http://api.open-notify.org/iss-now.json?callback=?', function(data) {
+                var lat = data['iss_position']['latitude'];
+                var lon = data['iss_position']['longitude'];
+
+                // See leaflet docs for setting up icons and map layers
+                // The update to the map is done here:
+                iss.setLatLng([lat, lon]);
+                isscirc.setLatLng([lat, lon]);
+                map.panTo([lat, lon], animate = true);
+            });
+            setTimeout(moveISS, 5000);
+        }
 
 
         $.getJSON('http://api.open-notify.org/astros.json', function(data) {
-        console.log(data['number'])
+            console.log(data['number'])
         });
 
-        </script>
-    </body>
+        moveISS();
+
+        //oculto el div
+        $('#astronames').hide();
+    </script>
+</body>
+
 </html>
